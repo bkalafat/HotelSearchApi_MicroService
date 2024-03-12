@@ -11,10 +11,10 @@ var app = builder.Build();
 
 app.MapGet("/search", async (string? city, int? rating) =>
 {
-    var host = "https://96cb61893fd34951b5018633338ab10a.europe-west3.gcp.cloud.es.io:443";
-    var userName = "elastic";
-    var password = "Pc5ci6F4AY0251c55ZIbqKi7";
-    var indexName = "event";
+    var host = Environment.GetEnvironmentVariable("host");
+    var userName = Environment.GetEnvironmentVariable("userName");
+    var password = Environment.GetEnvironmentVariable("password");
+    var indexName = Environment.GetEnvironmentVariable("indexName");
 
     var connSettings = new ConnectionSettings(new Uri(host));
     connSettings.BasicAuthentication(userName, password);
